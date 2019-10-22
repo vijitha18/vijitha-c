@@ -1,39 +1,14 @@
 #include<stdio.h>
-typedef int AGE;
-typedef int DOB;
-typedef char NAME[10];
-typedef float CGPA;
-typedef char ID[12];
-struct student
+struct point
 {
-AGE my_age;
-NAME my_name;
-CGPA my_cgpa;
-ID my_id;
+int x;
+int y;
 };
-typedef struct student STUDENT;
 void main()
 {
-STUDENT st[60];
-int n,i;
-printf("Enter How many student\n");
-scanf("%d",&n);
-for(i=0;i<n;i++)
-{
-printf("Enter the age of %d student\n",i);
-scanf("%d",&st[i].my_age);
-printf("Enter the CGPA of %d student\n",i);
-scanf("%f",_________);
-printf("Enter the name of %d student \n",i);
-scanf("%s",___________);
-printf("Enter the Id of the %d student \n",i);
-scanf("%s",st[i].my_id);
-}
-for(i=0;i<n;i++)
-{
-printf("%d student Name is %s\n",i,st[i].my_name);
-printf("%d student Age is %d\n",____,____);
-printf("%d student CGPA is %f\n",_____,____);
-printf("%d student ID is %s\n",_____,_____);
-}
+struct point p1;
+printf("enter the value x-axis and y-axis to point p1");
+scanf("%d%d",&p1.x,&p1.y);
+printf("the x-axis of point is %d\n",p1.x);
+printf("the y-axis of point is %d\n",p1.y);
 }

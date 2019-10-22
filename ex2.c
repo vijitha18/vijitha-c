@@ -1,30 +1,22 @@
 #include<stdio.h>
-typedef int AGE;
-typedef int DOB;
-typedef char NAME[10];
-typedef float CGPA;
-typedef char ID[12];
-struct student
+struct complex
 {
-AGE my_age;
-NAME my_name;
-CGPA my_cgpa;
-ID my_id;
+float r;
+float i;
 };
-typedef struct student STUDENT;
 void main()
 {
-STUDENT st;
-printf("Enter the age\n");
-scanf("%d",&st.my_age);
-printf("Enter the CGPA\n");
-scanf("%f",&st.my_cgpa);
-printf("Enter the name \n");
-scanf("%s",st.my_name);
-printf("Enter the Id of the student \n");
-scanf("%s",st.my_id);
-printf("Name of student is %s\n",st.my_name);
-printf("Age of student is %d\n",st.my_age);
-printf("CGPA of student is %f\n",st.my_cgpa);
-printf("ID of student is %s\n",st.my_id);
+struct complex c1,c2,c3;
+printf(" Enter the real and img value for complex number 1 \n");
+scanf("%f%f",&c1.r,&c1.i);
+printf(" Enter the real and imaginary value for complex number 2\n");
+scanf("%f%f",&c2.r,&c2.i);
+if(c1.r==c2.r && c1.i==c2.i)
+printf("SAME\n");
+else
+printf("NOT SAME\n");
+c3.r=c1.r+c2.r;
+c3.i=c1.i+c2.i;
+printf(" The real part of complex number 3 is %f \n",c3.r);
+printf("The Imaginary part of complex number 3 is %f \n",c3.i);
 }

@@ -1,41 +1,15 @@
 #include<stdio.h>
-#include<stdlib.h>
-typedef int AGE;
-typedef int DOB;
-typedef char NAME[10];
-typedef float CGPA;
-typedef char ID[12];
-struct student
+struct point
 {
-AGE my_age;
-NAME my_name;
-CGPA my_cgpa;
-ID my_id;
+int x;
+int y;
 };
-typedef struct student STUDENT;
 void main()
 {
-STUDENT *st;
-int n,i;
-printf("Enter How many student\n");
-scanf("%d",&n);
-st=(STUDENT*)malloc(n*sizeof(struct student));
-for(i=0;i<n;i++)
-{
-printf("Enter the age of %d student\n",i);
-scanf("%d",&st[i].my_age);
-printf("Enter the CGPA of %d student\n",i);
-scanf("%f",&st[i].my_cgpa);
-printf("Enter the name of %d student \n",i);
-scanf("%s",st[i].my_name);
-printf("Enter the Id of the %d student \n",i);
-scanf("%s",st[i].my_id);
-}
-for(i=0;i<n;i++)
-{
-printf("%d student Name is %s\n",i,st[i].my_name);
-printf("%d student Age is %d\n",i,st[i].my_age);
-printf("%d student CGPA is %f\n",i,st[i].my_cgpa);
-printf("%d student ID is %s\n",i,st[i].my_id);
-}
+struct point p1,p2,p3,p4;
+printf(" Enter the values x-axis and y-axis to points\n");
+scanf("%d%d%d%d",&p1.x,&p2.x,&p3.x,&p4.x);
+scanf("%d%d%d%d",&p1.y,&p2.y,&p3.y,&p4.y);
+printf("The x-axis of the points are %d%d%d%d",p1.x,p2.x,p3.x,p4.x);
+printf("The y-axis of the points are %d%d%d%d",p1.y,p2.y,p3.y,p4.y);
 }
