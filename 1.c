@@ -1,193 +1,105 @@
 #include<stdio.h>
-#include<stdlib.h>
-struct list
+void read(int plhari[],int size)
 {
-int item;
-struct list *address;
-};
-typedef struct list * LOCATION;
-LOCATION createnode()
-{
-LOCATION newnode;
-newnode=(LOCATION)malloc(sizeof(struct list));
-return(newnode);
+printf("enter the values for %d items\n",size);
+for(int i=0;i<size;i++)
+scanf("%d",&plhari[i]);
 }
-LOCATION insertfront(LOCATION first,int cost)
+void display(int plhari[],int size)
 {
-LOCATION temp;
-temp=createnode();
-temp->item=cost;
-temp->address=first;
-first=temp;
-return(first);
+printf("entered values are\n");
+for(int i=0;i<size;i++)
+printf("item[%d]=%d",i,plhari[i]);
 }
-LOCATION insertlast(LOCATION first,int cost)
+void update1(int plhari[],int size)
 {
-LOCATION temp,cur;
-temp=createnode();
-temp->item=cost;
-temp->address=NULL;
-if(first==NULL)
+int i;
+for(int i=0;i<size;i++)
+plhari[i]=plhari[i]*2;
+}
+void addall(int plhari[],int size)
 {
-first=temp;
-return(first);
+int i,total=0;
+for(int i=0;i<size;i++)
+total=total+plhari[i];
+return total;
 }
-cur=first;
-while(cur->address!=NULL)
+void updatepos(int plhari[],int size)
 {
-cur=cur->address;
-}
-cur->address=temp;
-return(first);
-}
-void display(LOCATION first)
+if (pos<=size)
 {
-int position=1;
-LOCATION cur;
-cur=first;
-while(cur->address!=NULL)
-{
-printf("cost of %d item is%d",position,cur->item);
-position++;
-cur=cur->address;
+plhari[pos]=val;
+return plhari[pos];
+prinf("after updating");
 }
-}
-LOCATION deleteitem(LOCATION first,int cost)
-{
-LOCATION cur,prv;
-if(first==NULL)
-{ printf("No item to delete\n");
-return(first);
-}
-if(first->item==cost)
-{
-printf("The deleted item is %d\n",first->item);
-cur=first;
-first=first->address;
-free(cur);
-return(first);
-}
-prv=NULL;
-cur=first;
-while(cur!=NULL&&cur->item!=cost)
-{
-cur=cur->address;
-}
-if(cur==NULL) 
-printf("Item Not found\n");
-else 
-{
-printf("Deleted item is %d\n",cur->item);
-prv->address=cur->address;
-free(cur);
-}
-return(first);
-}
-LOCATION insertposition(LOCATION first,int cost,int position)
-{
-LOCATION temp,prv,cur;
-prv=NULL;
-int count=1;
-temp=createnode();
-temp->item=cost;
-temp->address=NULL;
-if(position=1)
-{
-temp->address=first;
-first=temp;
-return(first);
-}
-while(cur!=NULL&&count!=position)
-{
-prv=cur;
-cur=cur->address;
-count++;
-}
-if(cur==NULL)
-printf("invalid position");
 else
 {
-prv->address=temp;
-temp->address=cur;
+printf("invalid input\n");
 }
-return(first);
-}
-LOCATION deletefront(LOCATION first)
+void search(int plhari[],int ele)
 {
-LOCATION cur;
-if(first==NULL)
+int i;
+for(int i=0;i<size;i++)
 {
-printf("nothing");
-return(first);
+if (plhari[i]==ele)
+printf("%d is present in %d position",ele,i);
 }
-cur=first;
-first=first->address;
-printf("deleted item is %d",cur->item);
-free(cur);
-return(first);
 }
-LOCATION deletelast(LOCATION first)
+void count(int plhari[],int size,int value)
 {
-LOCATION prv,cur;
-if(first==NULL)
+int i,c=0;
+for(int i=0;i<size,i++)
 {
-printf("nothing");
-return(first);
+if(plhari[i]<value)
+c=c+1;
 }
-prv=NULL;
-cur=first;
-while(cur->address!=NULL)
+return c;
+}
+void pos(int plhari[],int size,int pos1,int pos2)
 {
-prv=cur;
-cur=cur->address;
+int temp;
+if(pos1<=size)
+{
+if(pos2<=size)
+{
+temp=plhari[pos1];
+plhari[pos1]=plhari[pos2];
+plhari[pos2]=temp;
+printf("after swapping\n");
 }
-prv->address=NULL;
-printf("deleted item is %d",cur->item);
-free(cur);
-return(first);
+}
+else
+printf("invalid input\n");
+}
+void copy(int plhari[],int plrebel[],int size)
+{
+int i;
+for(i=0;i<size;i++)
+plrebel[i]=plhari[i];
+}
+void extract(int plhari[],int size,int p1,int p2)
+{
+if(p1<=size)
+{
+if(p2<=size)
+{
+printf("%d is the number present in %d position\n",plhari[p1],p1);
+printf("%d is the number present in %d position\n",plhari[p2],p2);
+}
+}
+else
+{
+printf("invalid input\n");
 }
 void main()
 {
-int cost,choice,position;
-LOCATION first=NULL;
-for(;;)
-{
-printf("Enter the Choice\n");
-printf("1: Insert Front\t 2: Insert Last 3: delete item\n");
-printf("4:insert position 5: Delete front 6: Delete last \t7:Display \n");
-scanf("%d",&choice);
-switch(choice)
-{
-case 1: printf("Enter the item\n");
-        scanf("%d",&cost);
-        first=insertfront(first,cost);
-        display(first);
-        break;
-case 2: printf("Enter the item\n");
-        scanf("%d",&cost);
-        first=insertlast(first,cost);
-        display(first);
-        break;
-case 3: display(first);
-        break;
-case 4: printf("\nenter the cost:");
-        scanf("%d",&cost);
-        first=deleteitem(first,cost);
-        break;
-case 5: printf("\nenter the cost:");
-        scanf("%d",&cost);
-        printf("enter the position:");
-        scanf("%d",&position);
-        first=insertposition(first,cost,position); 
-        display(first);
-        break;
-case 6: first=deletefront(first);
-        display(first);
-        break;
-case 7: first=deletelast(first);
-        display(first);       
-        break;
-default: exit(0);
-}
-}
-}
+int i,plhari[10],number,sum,ele,val,n,pos1,pos2,plrebel[10],p1,p2,position,value,update;
+printf("enter how many numbers to read\n");
+scanf("%d",&number);
+read(plhari,number);
+display(plhari,number);
+update1(plhari,number);
+printf("\n the price after getting doubled\n");
+display(plhari,number);
+printf("\n adding all the elements\n");
+
